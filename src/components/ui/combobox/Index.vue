@@ -23,7 +23,6 @@ export interface IComboboxOption {
   value: string;
   label: string;
   icon?: any;
-  altIcon?: any;
 }
 
 interface Props {
@@ -41,6 +40,7 @@ interface Props {
   width?: string;
   size?: 'sm' | 'lg' | 'default';
   class?: string;
+  isMenuIcon?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -57,6 +57,7 @@ const props = withDefaults(defineProps<Props>(), {
   width: 'w-[200px]',
   size: 'default',
   class: '',
+  isMenuIcon: false,
 });
 
 const emit = defineEmits<{
@@ -131,8 +132,15 @@ function clearValue() {
         />
         <CommandList>
           <CommandEmpty>{{ emptyMessage }}</CommandEmpty>
-          <CommandGroup>
+          <CommandGroup class="space-y-1">
             <CommandItem
+              :class="
+                cn(
+                  'font-medium',
+                  value === option.value && 'text-primary bg-primary/5'
+                )
+              "
+              class="hover:text-primary hover:bg-primary/5"
               v-for="option in options"
               :key="option.value"
               :value="option.value"
@@ -142,6 +150,7 @@ function clearValue() {
             >
               <div class="flex items-center gap-2">
                 <HugeiconsIcon
+                  v-show="isMenuIcon"
                   v-if="option.icon"
                   class="size-4"
                   :icon="option.icon"
