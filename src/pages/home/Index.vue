@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Add01Icon } from '@hugeicons-pro/core-stroke-rounded';
+import { HugeiconsIcon } from '@hugeicons/vue';
 
 import Button from '../../components/ui/button/Button.vue';
 import Card from './card.vue';
