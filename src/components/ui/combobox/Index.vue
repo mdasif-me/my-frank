@@ -14,25 +14,49 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
-import { CheckIcon, ChevronsUpDownIcon } from 'lucide-vue-next';
+import { ArrowDown01Icon } from '@hugeicons-pro/core-stroke-standard';
+import { HugeiconsIcon } from '@hugeicons/vue';
+import { CheckIcon } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 
 export interface IComboboxOption {
   value: string;
   label: string;
+  icon?: any;
+  altIcon?: any;
 }
 
 interface Props {
   options: IComboboxOption[];
+  modelValue?: string;
   placeholder?: string;
   searchPlaceholder?: string;
   emptyMessage?: string;
+  disabled?: boolean;
+  align?: 'start' | 'center' | 'end';
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  searchable?: boolean;
+  clearable?: boolean;
+  multiple?: boolean;
+  width?: string;
+  size?: 'sm' | 'lg' | 'default';
+  class?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  modelValue: '',
   placeholder: 'Select an option...',
   searchPlaceholder: 'Search...',
   emptyMessage: 'No option found.',
+  disabled: false,
+  align: 'start',
+  side: 'bottom',
+  searchable: true,
+  clearable: false,
+  multiple: false,
+  width: 'w-[200px]',
+  size: 'default',
+  class: '',
 });
 
 const emit = defineEmits<{
@@ -40,7 +64,7 @@ const emit = defineEmits<{
 }>();
 
 const open = ref(false);
-const value = ref('');
+const value = ref(props.modelValue);
 
 const selectedOption = computed(() =>
   props.options.find((option) => option.value === value.value)
@@ -51,24 +75,60 @@ function selectOption(selectedValue: string) {
   emit('update:modelValue', value.value);
   open.value = false;
 }
+
+function clearValue() {
+  value.value = '';
+  emit('update:modelValue', '');
+}
 </script>
 
 <template>
   <Popover v-model:open="open">
     <PopoverTrigger as-child>
       <Button
-        variant="outline"
+        :variant="disabled ? 'secondary' : 'outline'"
         role="combobox"
         :aria-expanded="open"
-        class="w-[200px] justify-between"
+        :disabled="disabled"
+        :class="cn(props.width, 'justify-between', props.class)"
+        :size="size"
       >
-        {{ selectedOption?.label || placeholder }}
-        <ChevronsUpDownIcon class="opacity-50" />
+        <div class="flex items-center gap-2 flex-1 truncate">
+          <HugeiconsIcon
+            v-if="selectedOption?.icon"
+            class="size-4 shrink-0"
+            :icon="selectedOption.icon"
+            :size="16"
+          />
+          <span class="truncate">{{
+            selectedOption?.label || placeholder
+          }}</span>
+        </div>
+        <div class="flex items-center gap-1 ml-2">
+          <button
+            v-if="clearable && value"
+            type="button"
+            class="p-0 h-6 w-6 rounded hover:bg-muted flex items-center justify-center"
+            @click.stop="clearValue"
+          >
+            ✕
+          </button>
+          <HugeiconsIcon :icon="ArrowDown01Icon" class="size-5 shrink-0" />
+        </div>
       </Button>
     </PopoverTrigger>
-    <PopoverContent class="w-[200px] p-0">
+    <PopoverContent
+      :align="align"
+      :side="side"
+      class="p-0"
+      :class="props.width"
+    >
       <Command>
-        <CommandInput class="h-9" :placeholder="searchPlaceholder" />
+        <CommandInput
+          v-if="searchable"
+          class="h-9"
+          :placeholder="searchPlaceholder"
+        />
         <CommandList>
           <CommandEmpty>{{ emptyMessage }}</CommandEmpty>
           <CommandGroup>
@@ -80,7 +140,15 @@ function selectOption(selectedValue: string) {
                 selectOption(ev.detail.value as string)
               }"
             >
-              {{ option.label }}
+              <div class="flex items-center gap-2">
+                <HugeiconsIcon
+                  v-if="option.icon"
+                  class="size-4"
+                  :icon="option.icon"
+                  :size="16"
+                />
+                {{ option.label }}
+              </div>
               <CheckIcon
                 :class="
                   cn(
