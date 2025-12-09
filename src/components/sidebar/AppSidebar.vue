@@ -55,10 +55,18 @@ const isActive = (path: string): boolean => {
         </RouterLink>
       </SidebarMenu>
     </SidebarContent>
-    <SidebarFooter class="px-4 py-8">
+    <SidebarFooter class="p-6">
       <SidebarMenu>
-        <SidebarMenuItem class="text-sm text-muted-foreground">
-          © 2024 MyFrank
+        <SidebarMenuItem
+          class="font-medium text-base flex items-center gap-3 cursor-pointer rounded-md p-3 hover:bg-destructive/5"
+        >
+          <img
+            src="../../assets/logout.svg"
+            alt="signout"
+            sizes="24"
+            class="size-6 shrink-0"
+          />
+          Sign out
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarFooter>
