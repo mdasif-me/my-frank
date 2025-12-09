@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar';
-import Feature from '../components/header/Feature.vue';
+import Feature from '../components/header/Index.vue';
 
 const { open } = useSidebar();
 </script>

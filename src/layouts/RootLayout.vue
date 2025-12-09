@@ -9,7 +9,7 @@ import HeaderLayout from '@/layouts/HeaderLayout.vue';
     <AppSidebar />
     <SidebarInset>
       <HeaderLayout />
-      <div class="flex flex-1 flex-col gap-4 p-4">
+      <div class="w-full p-6">
         <router-view />
       </div>
     </SidebarInset>
