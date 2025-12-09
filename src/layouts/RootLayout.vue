@@ -18,7 +18,13 @@ const route = useRoute();
 
 const breadcrumbLabel = {
   Home: 'Home',
-  Dashboard: 'Dashboard',
+  'Review Management': 'Review Management',
+  'Team Members': 'Team Members',
+  'My Campaigns': 'My Campaigns',
+  Rewards: 'Rewards',
+  'Competitor Analysis': 'Competitor Analysis',
+  'Plan & Billings': 'Plan & Billings',
+  'My Network': 'My Network',
   Settings: 'Settings',
 };
 
