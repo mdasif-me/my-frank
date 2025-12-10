@@ -111,7 +111,8 @@ const tableColumns: any = [
 <template>
   <Card class="w-full">
     <CardHeader class="flex items-center justify-between w-full">
-      <CardTitle class="text-2xl font-bold leading-normal"
+      <CardTitle
+        class="md:text-2xl text-xl md:font-bold font-semibold leading-normal"
         >My Campaigns</CardTitle
       >
       <div>

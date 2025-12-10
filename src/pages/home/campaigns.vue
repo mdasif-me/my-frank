@@ -28,97 +28,106 @@ const rankings = computed(() => rankingStore.rankings);
 </script>
 
 <template>
-  <section class="flex items-start w-full h-full gap-6">
-    <Card class="w-full">
-      <CardHeader class="flex items-center justify-between w-full">
-        <CardTitle class="text-2xl font-bold leading-normal"
+  <section class="flex md:flex-row flex-col items-start w-full h-full gap-6">
+    <Card class="w-full md:border border-none md:py-6 py-0">
+      <CardHeader class="flex items-center justify-between w-full md:px-6 px-0">
+        <CardTitle
+          class="md:text-2xl text-xl md:font-bold font-semibold leading-normal"
           >My Campaigns</CardTitle
         >
-        <Button
-          ><HugeiconsIcon class="size-4 shrink-0" :icon="Add01Icon" />Create New
-          Campaign</Button
-        >
+        <Button class="md:flex hidden">
+          <HugeiconsIcon class="size-4 shrink-0" :icon="Add01Icon" />
+          Create New Campaign
+        </Button>
+        <Button class="md:hidden">
+          <HugeiconsIcon class="size-4 shrink-0" :icon="Add01Icon" />
+          Create
+        </Button>
       </CardHeader>
-      <CardContent class="w-full">
+      <CardContent class="w-full md:px-6 px-0">
         <Tabs v-model="tabValue" class="w-full">
-          <TabsList class="w-full bg-[#EBEFF5] gap-2 h-10 mb-6">
-            <TabsTrigger
-              :class="tabValue === 'campaign' && 'bg-white! shadow!'"
-              value="campaign"
+          <div class="w-full overflow-x-auto md:overflow-visible">
+            <TabsList
+              class="w-fit md:w-full bg-[#EBEFF5] gap-2 md:h-11 h-10 mb-6 flex flex-nowrap md:flex-wrap"
             >
-              All Campaign
-              <Badge
-                :class="
-                  tabValue === 'campaign'
-                    ? 'text-primary'
-                    : 'text-[#334155]! bg-[#CBD5E1]!'
-                "
-                class="h-5 min-w-5 bg-[#E6EEFD] rounded-full px-1 tabular-nums font-medium text-xs"
+              <TabsTrigger
+                :class="tabValue === 'campaign' && 'bg-white! shadow!'"
+                value="campaign"
               >
-                3
-              </Badge>
-            </TabsTrigger>
-            <Separator orientation="vertical" class="bg-[#94A3B8]" />
-            <TabsTrigger
-              :class="tabValue === 'upcoming' && 'bg-white! shadow!'"
-              value="upcoming"
-              >Upcoming<Badge
-                :class="
-                  tabValue === 'upcoming'
-                    ? 'text-primary'
-                    : 'text-[#334155]! bg-[#CBD5E1]!'
-                "
-                class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+                All Campaign
+                <Badge
+                  :class="
+                    tabValue === 'campaign'
+                      ? 'text-primary'
+                      : 'text-[#334155]! bg-[#CBD5E1]!'
+                  "
+                  class="h-5 min-w-5 bg-[#E6EEFD] rounded-full px-1 tabular-nums font-medium text-xs"
+                >
+                  3
+                </Badge>
+              </TabsTrigger>
+              <Separator orientation="vertical" class="bg-[#94A3B8]" />
+              <TabsTrigger
+                :class="tabValue === 'upcoming' && 'bg-white! shadow!'"
+                value="upcoming"
+                >Upcoming<Badge
+                  :class="
+                    tabValue === 'upcoming'
+                      ? 'text-primary'
+                      : 'text-[#334155]! bg-[#CBD5E1]!'
+                  "
+                  class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+                >
+                  8
+                </Badge></TabsTrigger
               >
-                8
-              </Badge></TabsTrigger
-            >
-            <Separator orientation="vertical" class="bg-[#94A3B8]" />
-            <TabsTrigger
-              :class="tabValue === 'inprogress' && 'bg-white! shadow!'"
-              value="inprogress"
-              >In Progress<Badge
-                :class="
-                  tabValue === 'inprogress'
-                    ? 'text-primary'
-                    : 'text-[#334155]! bg-[#CBD5E1]!'
-                "
-                class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+              <Separator orientation="vertical" class="bg-[#94A3B8]" />
+              <TabsTrigger
+                :class="tabValue === 'inprogress' && 'bg-white! shadow!'"
+                value="inprogress"
+                >In Progress<Badge
+                  :class="
+                    tabValue === 'inprogress'
+                      ? 'text-primary'
+                      : 'text-[#334155]! bg-[#CBD5E1]!'
+                  "
+                  class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+                >
+                  8
+                </Badge></TabsTrigger
               >
-                8
-              </Badge></TabsTrigger
-            >
-            <Separator orientation="vertical" class="bg-[#94A3B8]" />
-            <TabsTrigger
-              :class="tabValue === 'completed' && 'bg-white! shadow!'"
-              value="completed"
-              >Completed<Badge
-                :class="
-                  tabValue === 'completed'
-                    ? 'text-primary'
-                    : 'text-[#334155]! bg-[#CBD5E1]!'
-                "
-                class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+              <Separator orientation="vertical" class="bg-[#94A3B8]" />
+              <TabsTrigger
+                :class="tabValue === 'completed' && 'bg-white! shadow!'"
+                value="completed"
+                >Completed<Badge
+                  :class="
+                    tabValue === 'completed'
+                      ? 'text-primary'
+                      : 'text-[#334155]! bg-[#CBD5E1]!'
+                  "
+                  class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+                >
+                  8
+                </Badge></TabsTrigger
               >
-                8
-              </Badge></TabsTrigger
-            >
-            <Separator orientation="vertical" class="bg-[#94A3B8]" />
-            <TabsTrigger
-              :class="tabValue === 'archive' && 'bg-white! shadow!'"
-              value="archive"
-              >Archive<Badge
-                :class="
-                  tabValue === 'archive'
-                    ? 'text-primary'
-                    : 'text-[#334155]! bg-[#CBD5E1]!'
-                "
-                class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+              <Separator orientation="vertical" class="bg-[#94A3B8]" />
+              <TabsTrigger
+                :class="tabValue === 'archive' && 'bg-white! shadow!'"
+                value="archive"
+                >Archive<Badge
+                  :class="
+                    tabValue === 'archive'
+                      ? 'text-primary'
+                      : 'text-[#334155]! bg-[#CBD5E1]!'
+                  "
+                  class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+                >
+                  8
+                </Badge></TabsTrigger
               >
-                8
-              </Badge></TabsTrigger
-            >
-          </TabsList>
+            </TabsList>
+          </div>
           <TabsContent value="campaign">
             <Campaign />
           </TabsContent>
