@@ -13,6 +13,8 @@
     "@hugeicons-pro/core-stroke-rounded": "^2.0.0",
     "@hugeicons-pro/core-stroke-standard": "^2.0.0",
     "@hugeicons/vue": "^1.0.3",
+    "@unovis/ts": "^1.6.2",
+    "@unovis/vue": "^1.6.2",
     "@vueuse/core": "^14.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
