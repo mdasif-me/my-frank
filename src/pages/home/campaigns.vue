@@ -146,15 +146,17 @@ const tabValue = ref('campaign');
           search-placeholder="Search countries..."
         />
       </CardHeader>
-      <CardContent class="w-full h-full">
-        <Card>
-          <CardContent class="flex items-center justify-between w-full">
+      <CardContent
+        class="w-full max-h-[708px] min-h-[708px] overflow-auto space-y-3"
+      >
+        <Card v-for="n in Array.from({ length: 9 }, (_, i) => i + 1)" :key="n">
+          <CardContent class="flex items-center gap-3 justify-between w-full">
             <img
               src="../../assets/bages-icon.svg"
-              class="size-10"
+              class="size-14 shrink-0"
               alt="Team Ranking"
             />
-            <article>
+            <article class="w-fit shrink-0">
               <h1 class="text-xl font-semibold">Sarah Chen</h1>
               <p class="flex items-center gap-1">
                 <HugeiconsIcon
