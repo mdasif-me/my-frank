@@ -40,19 +40,19 @@ const getStatusText = (status: string) => {
     </div>
     <Card v-for="ranking in rankings" :key="ranking.id">
       <CardHeader class="flex items-center justify-between w-full">
-        <CardTitle class="text-2xl font-semibold">
+        <CardTitle class="md:text-2xl text-base font-medium md:font-semibold">
           {{ ranking.title }}
         </CardTitle>
         <div class="flex items-center gap-3">
           <Badge
-            :class="`text-base border-[#8AB1F5] px-4 font-medium rounded-full py-1 ${getStatusColor(
+            :class="`md:text-base text-sm border-[#8AB1F5] md:px-4 px-2 md:font-medium rounded-full py-1 ${getStatusColor(
               ranking.status
             )}`"
             variant="outline"
           >
             {{ getStatusText(ranking.status) }}
           </Badge>
-          <ButtonGroup>
+          <ButtonGroup class="md:block hidden">
             <Button variant="outline" class="bg-white rounded-full">
               <HugeiconsIcon
                 class="size-4 text-[#475569] shrink-0"
@@ -72,8 +72,15 @@ const getStatusText = (status: string) => {
       </CardHeader>
       <CardContent class="space-y-5">
         <div class="flex items-center gap-2">
-          <h1 class="text-2xl font-semibold">🎁 {{ ranking.reward }}</h1>
-          <Button variant="outline" class="bg-white"> 3 more reward </Button>
+          <h1 class="md:text-2xl text-base font-semibold">
+            🎁 {{ ranking.reward }}
+          </h1>
+          <Button
+            variant="outline"
+            class="bg-white md:px-4 px-2 md:py-2 py-1 md:text-base text-sm"
+          >
+            3 more reward
+          </Button>
         </div>
         <div class="flex items-center gap-4">
           <p class="text-sm font-medium">Top Performer</p>
