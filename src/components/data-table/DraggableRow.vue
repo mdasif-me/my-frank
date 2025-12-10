@@ -3,16 +3,15 @@ import { TableCell, TableRow } from '@/components/ui/table';
 import type { Row } from '@tanstack/vue-table';
 import { FlexRender } from '@tanstack/vue-table';
 import { useSortable } from 'dnd-kit-vue';
-import type { z } from 'zod';
-import type { schema } from './Index.vue';
 
 const props = defineProps<{
-  row: Row<z.infer<typeof schema>>;
+  row: Row<any>;
   index: number;
 }>();
 
+const rowId = String(props.row.original.id);
 const { elementRef, isDragging } = useSortable({
-  id: props.row.original.id,
+  id: rowId,
   index: props.index,
 });
 </script>
