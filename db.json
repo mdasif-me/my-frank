@@ -1,0 +1,226 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Guy Hawkins",
+      "address": "94 Rue des Dames, 75017 Paris, France",
+      "rating": 3.9,
+      "totalReview": 1393,
+      "status": {
+        "value": 0.0,
+        "type": "neutral"
+      }
+    },
+    {
+      "id": 2,
+      "name": "John Anderson",
+      "address": "123 Business Ave, New York, NY 10001",
+      "rating": 4.5,
+      "totalReview": 2156,
+      "status": {
+        "value": 9.7,
+        "type": "positive"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Sarah Mitchell",
+      "address": "456 Commerce St, Los Angeles, CA 90001",
+      "rating": 3.2,
+      "totalReview": 892,
+      "status": {
+        "value": -3.9,
+        "type": "negative"
+      }
+    },
+    {
+      "id": 4,
+      "name": "James Wilson",
+      "address": "789 Market Pl, Chicago, IL 60601",
+      "rating": 4.1,
+      "totalReview": 1567,
+      "status": {
+        "value": 5.2,
+        "type": "positive"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Emma Davis",
+      "address": "321 Trade Rd, Houston, TX 77001",
+      "rating": 3.7,
+      "totalReview": 1123,
+      "status": {
+        "value": 0.0,
+        "type": "neutral"
+      }
+    }
+  ],
+  "stats": [
+    {
+      "id": 1,
+      "title": "Total Reviews",
+      "value": "57",
+      "icon": "star"
+    },
+    {
+      "id": 2,
+      "title": "Average Rating",
+      "value": "4.5",
+      "icon": "star-off"
+    },
+    {
+      "id": 3,
+      "title": "Active Members",
+      "value": "69",
+      "icon": "user-check"
+    },
+    {
+      "id": 4,
+      "title": "Total Campaign",
+      "value": "01",
+      "icon": "calendar"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": 1,
+      "name": "Summer Sale 2024",
+      "status": "active",
+      "startDate": "2024-06-01",
+      "endDate": "2024-08-31",
+      "budget": 15000,
+      "spent": 12500,
+      "reach": 45000,
+      "engagement": 8500,
+      "conversions": 320,
+      "conversionRate": 7.1
+    },
+    {
+      "id": 2,
+      "name": "Winter Campaign",
+      "status": "active",
+      "startDate": "2024-12-01",
+      "endDate": "2024-12-31",
+      "budget": 20000,
+      "spent": 18000,
+      "reach": 62000,
+      "engagement": 12300,
+      "conversions": 450,
+      "conversionRate": 7.3
+    },
+    {
+      "id": 3,
+      "name": "Spring Launch",
+      "status": "draft",
+      "startDate": "2025-03-01",
+      "endDate": "2025-05-31",
+      "budget": 25000,
+      "spent": 0,
+      "reach": 0,
+      "engagement": 0,
+      "conversions": 0,
+      "conversionRate": 0
+    },
+    {
+      "id": 4,
+      "name": "Black Friday Deals",
+      "status": "completed",
+      "startDate": "2024-11-01",
+      "endDate": "2024-11-30",
+      "budget": 18000,
+      "spent": 17800,
+      "reach": 85000,
+      "engagement": 15600,
+      "conversions": 580,
+      "conversionRate": 6.8
+    },
+    {
+      "id": 5,
+      "name": "Email Marketing Series",
+      "status": "active",
+      "startDate": "2024-10-15",
+      "endDate": "2025-01-15",
+      "budget": 8000,
+      "spent": 6500,
+      "reach": 32000,
+      "engagement": 4200,
+      "conversions": 180,
+      "conversionRate": 5.6
+    }
+  ],
+  "rankings": [
+    {
+      "id": 1,
+      "title": "July Review Challenge",
+      "status": "in-progress",
+      "reward": "€50 Gift Card",
+      "topPerformer": "Paul Bertel",
+      "progress": 33,
+      "startDate": "2024-07-01",
+      "endDate": "2024-07-31",
+      "daysLeft": 10,
+      "timeLeft": "5 days left"
+    },
+    {
+      "id": 2,
+      "title": "August Contest",
+      "status": "in-progress",
+      "reward": "€100 Voucher",
+      "topPerformer": "Sarah Mitchell",
+      "progress": 65,
+      "startDate": "2024-08-01",
+      "endDate": "2024-08-31",
+      "daysLeft": 12,
+      "timeLeft": "3 days left"
+    },
+    {
+      "id": 3,
+      "title": "September Leaderboard",
+      "status": "completed",
+      "reward": "€75 Cash Prize",
+      "topPerformer": "John Anderson",
+      "progress": 100,
+      "startDate": "2024-09-01",
+      "endDate": "2024-09-30",
+      "daysLeft": 0,
+      "timeLeft": "Completed"
+    },
+    {
+      "id": 4,
+      "title": "Q4 Performance Sprint",
+      "status": "in-progress",
+      "reward": "€200 Premium Package",
+      "topPerformer": "Emma Davis",
+      "progress": 45,
+      "startDate": "2024-10-01",
+      "endDate": "2024-12-31",
+      "daysLeft": 51,
+      "timeLeft": "51 days left"
+    },
+    {
+      "id": 5,
+      "title": "Year-End Challenge",
+      "status": "in-progress",
+      "reward": "€150 Gift Card",
+      "topPerformer": "Michael Johnson",
+      "progress": 75,
+      "startDate": "2024-12-01",
+      "endDate": "2025-01-31",
+      "daysLeft": 30,
+      "timeLeft": "30 days left"
+    },
+    {
+      "id": 6,
+      "title": "November Contest",
+      "status": "in-progress",
+      "reward": "€100 Voucher",
+      "topPerformer": "Emily Wilson",
+      "progress": 60,
+      "startDate": "2024-11-01",
+      "endDate": "2024-11-30",
+      "daysLeft": 3,
+      "timeLeft": "3 days left"
+    }
+  ]
+}

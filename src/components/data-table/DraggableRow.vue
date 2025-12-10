@@ -23,7 +23,11 @@ const { elementRef, isDragging } = useSortable({
     :data-dragging="isDragging"
     class="relative z-0 data-[dragging=true]:z-10 data-[dragging=true]:opacity-80"
   >
-    <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+    <TableCell
+      v-for="cell in row.getVisibleCells()"
+      :key="cell.id"
+      class="text-center"
+    >
       <FlexRender
         :render="cell.column.columnDef.cell"
         :props="cell.getContext()"

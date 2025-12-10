@@ -333,6 +333,7 @@ const table = useVueTable({
                 v-for="header in headerGroup.headers"
                 :key="header.id"
                 :col-span="header.colSpan"
+                class="text-center"
               >
                 <FlexRender
                   v-if="!header.isPlaceholder"
@@ -353,7 +354,7 @@ const table = useVueTable({
             </template>
             <TableRow v-else>
               <TableCell
-                :col-span="buildColumns().length"
+                :colspan="table.getAllColumns().length"
                 class="h-24 text-center"
               >
                 No results.
@@ -374,6 +375,7 @@ const table = useVueTable({
               v-for="header in headerGroup.headers"
               :key="header.id"
               :col-span="header.colSpan"
+              class="text-center"
             >
               <FlexRender
                 v-if="!header.isPlaceholder"
@@ -390,7 +392,11 @@ const table = useVueTable({
               :key="row.id"
               :data-state="row.getIsSelected() && 'selected'"
             >
-              <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+              <TableCell
+                v-for="cell in row.getVisibleCells()"
+                :key="cell.id"
+                class="text-center"
+              >
                 <FlexRender
                   :render="cell.column.columnDef.cell"
                   :props="cell.getContext()"
@@ -400,7 +406,7 @@ const table = useVueTable({
           </template>
           <TableRow v-else>
             <TableCell
-              :col-span="buildColumns().length"
+              :colspan="table.getAllColumns().length"
               class="h-24 text-center"
             >
               No results.

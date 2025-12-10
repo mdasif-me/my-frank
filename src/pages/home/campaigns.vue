@@ -5,10 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Combobox } from '@/components/ui/combobox';
 import Separator from '@/components/ui/separator/Separator.vue';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useRankingStore } from '@/stores/rankingStore';
 import { StarIcon } from '@hugeicons-pro/core-solid-rounded';
 import { Add01Icon } from '@hugeicons-pro/core-stroke-rounded';
 import { HugeiconsIcon } from '@hugeicons/vue';
-import { ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import RankingChart from './ranking-chart.vue';
 import Archive from './status/archive.vue';
 import Campaign from './status/campaign.vue';
@@ -17,6 +18,13 @@ import Inprogress from './status/inprogress.vue';
 import Upcoming from './status/upcoming.vue';
 
 const tabValue = ref('campaign');
+const rankingStore = useRankingStore();
+
+onMounted(() => {
+  rankingStore.fetchRankings();
+});
+
+const rankings = computed(() => rankingStore.rankings);
 </script>
 
 <template>
@@ -129,7 +137,7 @@ const tabValue = ref('campaign');
         </Tabs>
       </CardContent>
     </Card>
-    <Card class="md:w-5/12 w-full h-auto">
+    <Card class="md:w-6/12 w-full h-auto">
       <CardHeader class="flex items-center justify-between w-full">
         <CardTitle class="text-2xl font-bold leading-normal"
           >Team Ranking</CardTitle
@@ -149,28 +157,42 @@ const tabValue = ref('campaign');
       <CardContent
         class="w-full max-h-[708px] min-h-[708px] overflow-auto space-y-3"
       >
-        <Card v-for="n in Array.from({ length: 9 }, (_, i) => i + 1)" :key="n">
+        <div v-if="rankingStore.loading" class="text-center py-8">
+          <p class="text-muted-foreground">Loading rankings...</p>
+        </div>
+        <div v-else-if="rankingStore.error" class="text-center py-8">
+          <p class="text-red-500">{{ rankingStore.error }}</p>
+        </div>
+        <Card v-for="ranking in rankings" :key="ranking.id">
           <CardContent class="flex items-center gap-3 justify-between w-full">
-            <img
-              src="../../assets/bages-icon.svg"
-              class="size-14 shrink-0"
-              alt="Team Ranking"
-            />
-            <article class="w-fit shrink-0">
-              <h1 class="text-xl font-semibold">Sarah Chen</h1>
-              <p class="flex items-center gap-1">
-                <HugeiconsIcon
-                  class="size-4 shrink-0"
-                  :icon="StarIcon"
-                  :color="'#FDB022'"
-                />
-                <span class="text-base font-normal"
-                  ><span class="text-base font-medium">4.9</span> (10
-                  Reviews)</span
-                >
-              </p>
-            </article>
-            <RankingChart />
+            <div class="flex items-center gap-3 w-full">
+              <img
+                src="../../assets/bages-icon.svg"
+                class="size-14 shrink-0"
+                alt="Team Ranking"
+              />
+              <article class="w-fit shrink-0">
+                <h1 class="text-xl font-semibold">
+                  {{ ranking.topPerformer }}
+                </h1>
+                <p class="flex items-center gap-1">
+                  <HugeiconsIcon
+                    class="size-4 shrink-0"
+                    :icon="StarIcon"
+                    :color="'#FDB022'"
+                  />
+                  <span class="text-base font-normal"
+                    ><span class="text-base font-medium">{{
+                      ranking.progress
+                    }}</span
+                    >% ({{ ranking.title }})</span
+                  >
+                </p>
+              </article>
+            </div>
+            <div>
+              <RankingChart />
+            </div>
           </CardContent>
         </Card>
       </CardContent>

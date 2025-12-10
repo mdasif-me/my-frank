@@ -8,6 +8,7 @@ import CardHeader from '@/components/ui/card/CardHeader.vue';
 import CardTitle from '@/components/ui/card/CardTitle.vue';
 import { InputGroup, InputGroupAddon } from '@/components/ui/input-group';
 import InputGroupInput from '@/components/ui/input-group/InputGroupInput.vue';
+import { useProductStore } from '@/stores/productStore';
 import {
   IconCongruentTo,
   IconStar,
@@ -15,9 +16,16 @@ import {
   IconTrendingUp,
 } from '@tabler/icons-vue';
 import { SearchIcon } from 'lucide-vue-next';
-import { h, ref } from 'vue';
+import { computed, h, onMounted } from 'vue';
 
-// Define columns specific to this table
+const productStore = useProductStore();
+
+onMounted(() => {
+  productStore.fetchProducts();
+});
+
+const data = computed(() => productStore.products);
+
 const tableColumns: any = [
   {
     accessorKey: 'name',
@@ -94,65 +102,6 @@ const tableColumns: any = [
       ]),
   },
 ];
-
-// Sample data
-const data = ref([
-  {
-    id: 1,
-    name: 'Guy Hawkins',
-    address: '94 Rue des Dames, 75017 Paris, France',
-    rating: 3.9,
-    totalReview: 1393,
-    status: {
-      value: 0.0,
-      type: 'neutral',
-    },
-  },
-  {
-    id: 2,
-    name: 'John Anderson',
-    address: '123 Business Ave, New York, NY 10001',
-    rating: 4.5,
-    totalReview: 2156,
-    status: {
-      value: 9.7,
-      type: 'positive',
-    },
-  },
-  {
-    id: 3,
-    name: 'Sarah Mitchell',
-    address: '456 Commerce St, Los Angeles, CA 90001',
-    rating: 3.2,
-    totalReview: 892,
-    status: {
-      value: -3.9,
-      type: 'negative',
-    },
-  },
-  {
-    id: 4,
-    name: 'James Wilson',
-    address: '789 Market Pl, Chicago, IL 60601',
-    rating: 4.1,
-    totalReview: 1567,
-    status: {
-      value: 5.2,
-      type: 'positive',
-    },
-  },
-  {
-    id: 5,
-    name: 'Emma Davis',
-    address: '321 Trade Rd, Houston, TX 77001',
-    rating: 3.7,
-    totalReview: 1123,
-    status: {
-      value: 0.0,
-      type: 'neutral',
-    },
-  },
-]);
 </script>
 <template>
   <Card class="w-full">
@@ -177,7 +126,6 @@ const data = ref([
         :is_checked="false"
         :is_actions="true"
         :is_customize_columns="false"
-        @update:data="(newData: any) => (data = newData)"
       />
     </CardContent>
   </Card>

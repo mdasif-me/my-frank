@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useStatsStore } from '@/stores/statsStore';
 import {
   Calendar01Icon,
   StarIcon,
@@ -6,29 +7,28 @@ import {
   UserCheck02Icon,
 } from '@hugeicons-pro/core-stroke-standard';
 import { HugeiconsIcon } from '@hugeicons/vue';
+import { computed, onMounted } from 'vue';
 
-const items = [
-  {
-    title: 'Total Reviews',
-    value: '57',
-    icon: StarIcon,
-  },
-  {
-    title: 'Average Rating',
-    value: '4.5',
-    icon: StarOffIcon,
-  },
-  {
-    title: 'Active Members',
-    value: '69',
-    icon: UserCheck02Icon,
-  },
-  {
-    title: 'Total Campaign',
-    value: '01',
-    icon: Calendar01Icon,
-  },
-];
+const statsStore = useStatsStore();
+
+onMounted(() => {
+  statsStore.fetchStats();
+});
+
+const iconMap: Record<string, any> = {
+  star: StarIcon,
+  'star-off': StarOffIcon,
+  'user-check': UserCheck02Icon,
+  calendar: Calendar01Icon,
+};
+
+const items = computed(() =>
+  statsStore.stats.map((stat) => ({
+    title: stat.title,
+    value: stat.value,
+    icon: iconMap[stat.icon] || StarIcon,
+  }))
+);
 </script>
 <template>
   <div class="flex items-center md:gap-6 gap-4 justify-between w-full">

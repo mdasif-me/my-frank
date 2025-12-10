@@ -4,23 +4,53 @@ import ButtonGroup from '@/components/ui/button-group/ButtonGroup.vue';
 import Button from '@/components/ui/button/Button.vue';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Slider from '@/components/ui/slider/Slider.vue';
+import { useRankingStore } from '@/stores/rankingStore';
 import { Delete02Icon, Edit03Icon } from '@hugeicons-pro/core-stroke-rounded';
 import { HugeiconsIcon } from '@hugeicons/vue';
+import { computed, onMounted } from 'vue';
+
+const rankingStore = useRankingStore();
+
+onMounted(() => {
+  rankingStore.fetchRankings();
+});
+
+const rankings = computed(() => rankingStore.rankings);
+
+const getStatusColor = (status: string) => {
+  if (status === 'in-progress') {
+    return 'text-primary bg-[#E6EEFD] border-[#8AB1F5]';
+  }
+  return 'text-green-600 bg-green-50 border-green-200';
+};
+
+const getStatusText = (status: string) => {
+  if (status === 'in-progress') return 'In progress';
+  return 'Completed';
+};
 </script>
 
 <template>
   <section class="space-y-4 max-h-[636px] flex-1 overflow-y-auto">
-    <Card v-for="n in Array.from({ length: 4 }, (_, i) => i + 1)" :key="n">
+    <div v-if="rankingStore.loading" class="text-center py-8">
+      <p class="text-muted-foreground">Loading campaigns...</p>
+    </div>
+    <div v-else-if="rankingStore.error" class="text-center py-8">
+      <p class="text-red-500">{{ rankingStore.error }}</p>
+    </div>
+    <Card v-for="ranking in rankings" :key="ranking.id">
       <CardHeader class="flex items-center justify-between w-full">
-        <CardTitle class="text-2xl font-semibold"
-          >July Review Challenge
+        <CardTitle class="text-2xl font-semibold">
+          {{ ranking.title }}
         </CardTitle>
         <div class="flex items-center gap-3">
           <Badge
-            class="text-base border-[#8AB1F5] px-4 text-primary font-medium bg-[#E6EEFD] rounded-full py-1"
+            :class="`text-base border-[#8AB1F5] px-4 font-medium rounded-full py-1 ${getStatusColor(
+              ranking.status
+            )}`"
             variant="outline"
           >
-            In progress
+            {{ getStatusText(ranking.status) }}
           </Badge>
           <ButtonGroup>
             <Button variant="outline" class="bg-white rounded-full">
@@ -42,22 +72,24 @@ import { HugeiconsIcon } from '@hugeicons/vue';
       </CardHeader>
       <CardContent class="space-y-5">
         <div class="flex items-center gap-2">
-          <h1 class="text-2xl font-semibold">🎁 €50 Gift Card</h1>
+          <h1 class="text-2xl font-semibold">🎁 {{ ranking.reward }}</h1>
           <Button variant="outline" class="bg-white"> 3 more reward </Button>
         </div>
         <div class="flex items-center gap-4">
           <p class="text-sm font-medium">Top Performer</p>
           <button class="text-sm font-semibold btn-gradient-card">
-            🥇 Paul Bertel
+            🥇 {{ ranking.topPerformer }}
           </button>
         </div>
-        <Slider :default-value="[33]" :max="100" :step="1" />
+        <Slider :default-value="[ranking.progress]" :max="100" :step="1" />
         <div class="flex items-center justify-between w-full gap-2">
           <article class="flex items-center gap-2">
             <p class="text-base">Start Date:</p>
-            <p class="text-base font-medium">10 Days Left</p>
+            <p class="text-base font-medium">
+              {{ ranking.daysLeft }} Days Left
+            </p>
           </article>
-          <p class="text-base">⏰ 5 Days left</p>
+          <p class="text-base">⏰ {{ ranking.timeLeft }}</p>
         </div>
       </CardContent>
     </Card>
