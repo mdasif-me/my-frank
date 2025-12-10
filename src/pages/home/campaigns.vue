@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import Badge from '@/components/ui/badge/Badge.vue';
+import Button from '@/components/ui/button/Button.vue';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Combobox } from '@/components/ui/combobox';
+import Separator from '@/components/ui/separator/Separator.vue';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { StarIcon } from '@hugeicons-pro/core-solid-rounded';
 import { Add01Icon } from '@hugeicons-pro/core-stroke-rounded';
 import { HugeiconsIcon } from '@hugeicons/vue';
 import { ref } from 'vue';
-import Badge from '../../components/ui/badge/Badge.vue';
-import Button from '../../components/ui/button/Button.vue';
-import { Combobox } from '../../components/ui/combobox';
-import Separator from '../../components/ui/separator/Separator.vue';
 import RankingChart from './ranking-chart.vue';
 import Archive from './status/archive.vue';
 import Campaign from './status/campaign.vue';
