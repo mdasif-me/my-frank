@@ -38,24 +38,24 @@ const visitorPercentage = computed(() => {
 <template>
   <ChartContainer
     :config="chartConfig"
-    class="mx-auto aspect-square max-h-[108px]"
+    class="mx-auto aspect-square max-h-[70px]"
     :style="{
-      '--vis-donut-central-label-font-size': 'var(--text-3xl)',
+      '--vis-donut-central-label-font-size': 'var(--text-sm)',
       '--vis-donut-central-label-font-weight': 'var(--font-weight-bold)',
-      '--vis-donut-central-label-text-color': 'var(--foreground)',
-      '--vis-donut-central-sub-label-text-color': 'var(--muted-foreground)',
+      '--vis-donut-central-label-text-color': 'var(--secondary-foreground)',
+      '--vis-donut-central-sub-label-text-color': 'var(--secondary-foreground)',
     }"
   >
     <VisSingleContainer :data="chartData">
       <VisDonut
         :value="(d: Data) => d.visitors"
         :color="(d: Data) => chartConfig[d.browser as keyof typeof chartConfig].color"
-        :arc-width="12"
-        :central-label-offset-y="10"
+        :arc-width="10"
+        :central-label-offset-y="4"
         :central-label="visitorPercentage + '%'"
         :cornerRadius="5"
-        central-sub-label="Visitors"
       />
+      <!-- central-sub-label="Visitors" -->
       <ChartTooltip
         :triggers="{
               [Donut.selectors.segment]: componentToString(chartConfig, ChartTooltipContent, { hideLabel: true })!,
