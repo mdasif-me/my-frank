@@ -31,21 +31,24 @@ const items = [
 ];
 </script>
 <template>
-  <div class="flex items-center gap-6 justify-between w-full">
+  <div class="flex items-center md:gap-6 gap-4 justify-between w-full">
     <div
-      v-for="item in items"
+      v-for="(item, index) in items"
       :key="item.title"
-      class="border w-full min-h-32 bg-white border-border rounded-2xl py-5 px-6 flex items-center gap-2"
+      :class="{ 'hidden md:flex': index >= 2 }"
+      class="border w-full min-h-32 bg-white border-border rounded-2xl md:py-5 py-4 md:px-6 px-5 flex items-center gap-2"
     >
       <article class="flex items-start gap-2">
         <div
-          class="size-10 p-2 flex items-center justify-center aspect-square bg-background rounded-full"
+          class="md:size-10 size-6 md:p-2 p-1 flex items-center justify-center aspect-square bg-background rounded-full"
         >
           <HugeiconsIcon class="size-5" :icon="item.icon" />
         </div>
 
-        <div class="mt-2">
-          <h2 class="text-base font-medium text-[#334155]">
+        <div class="md:mt-2 mt-1">
+          <h2
+            class="md:text-base text-sm md:font-medium font-normal whitespace-nowrap text-[#334155]"
+          >
             {{ item.title }}
           </h2>
           <h3 class="mt-2.5 text-[#0F172A] text-2xl font-semibold">

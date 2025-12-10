@@ -10,8 +10,8 @@ import Competitors from './competitors.vue';
 
 <template>
   <section class="space-y-6">
-    <div class="flex items-center justify-between">
-      <h1 class="text-2xl font-bold leading-8">
+    <div class="flex gap-4 items-center justify-between">
+      <h1 class="md:text-2xl text-xl md:font-bold font-semibold leading-8">
         Good morning, Forhad Sheikh 👋
       </h1>
       <Button class="">

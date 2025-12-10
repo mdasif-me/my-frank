@@ -9,7 +9,7 @@ import HeaderLayout from '@/layouts/HeaderLayout.vue';
     <AppSidebar />
     <SidebarInset>
       <HeaderLayout />
-      <div class="w-full p-6">
+      <div class="w-full md:bg-transparent bg-white p-6">
         <router-view />
       </div>
     </SidebarInset>
