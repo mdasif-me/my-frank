@@ -3,8 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Add01Icon } from '@hugeicons-pro/core-stroke-rounded';
 import { HugeiconsIcon } from '@hugeicons/vue';
+import { ref } from 'vue';
 import Badge from '../../components/ui/badge/Badge.vue';
 import Button from '../../components/ui/button/Button.vue';
+import Archive from './status/archive.vue';
+import Campaign from './status/campaign.vue';
+import Completed from './status/completed.vue';
+import Inprogress from './status/inprogress.vue';
+import Upcoming from './status/upcoming.vue';
+
+const tabValue = ref('campaign');
 </script>
 
 <template>
@@ -19,9 +27,11 @@ import Button from '../../components/ui/button/Button.vue';
       >
     </CardHeader>
     <CardContent class="w-full">
-      <Tabs default-value="campaign" class="w-full h-10">
+      <Tabs v-model="tabValue" class="w-full h-10">
         <TabsList class="w-full bg-[#EBEFF5] h-10">
-          <TabsTrigger class="bg-white!" value="campaign"
+          <TabsTrigger
+            :class="tabValue === 'campaign' && 'bg-white!'"
+            value="campaign"
             >All Campaign
             <Badge
               class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
@@ -29,15 +39,58 @@ import Button from '../../components/ui/button/Button.vue';
               8
             </Badge></TabsTrigger
           >
-          <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
-          <TabsTrigger value="inprogress">In Progress</TabsTrigger>
-          <TabsTrigger value="completed">Completed</TabsTrigger>
-          <TabsTrigger value="archive">Archive</TabsTrigger>
+          <TabsTrigger
+            :class="tabValue === 'upcoming' && 'bg-white!'"
+            value="upcoming"
+            >Upcoming<Badge
+              class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+            >
+              8
+            </Badge></TabsTrigger
+          >
+          <TabsTrigger
+            :class="tabValue === 'inprogress' && 'bg-white!'"
+            value="inprogress"
+            >In Progress<Badge
+              class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+            >
+              8
+            </Badge></TabsTrigger
+          >
+          <TabsTrigger
+            :class="tabValue === 'completed' && 'bg-white!'"
+            value="completed"
+            >Completed<Badge
+              class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+            >
+              8
+            </Badge></TabsTrigger
+          >
+          <TabsTrigger
+            :class="tabValue === 'archive' && 'bg-white!'"
+            value="archive"
+            >Archive<Badge
+              class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
+            >
+              8
+            </Badge></TabsTrigger
+          >
         </TabsList>
-        <TabsContent value="account">
-          Make changes to your account here.
+        <TabsContent value="campaign">
+          <Campaign />
         </TabsContent>
-        <TabsContent value="password"> Change your password here. </TabsContent>
+        <TabsContent value="upcoming">
+          <Upcoming />
+        </TabsContent>
+        <TabsContent value="inprogress">
+          <Inprogress />
+        </TabsContent>
+        <TabsContent value="completed">
+          <Completed />
+        </TabsContent>
+        <TabsContent value="archive">
+          <Archive />
+        </TabsContent>
       </Tabs>
     </CardContent>
   </Card>
