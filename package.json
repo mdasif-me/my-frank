@@ -13,16 +13,20 @@
     "@hugeicons-pro/core-stroke-rounded": "^2.0.0",
     "@hugeicons-pro/core-stroke-standard": "^2.0.0",
     "@hugeicons/vue": "^1.0.3",
+    "@tabler/icons-vue": "^3.35.0",
+    "@tanstack/vue-table": "^8.21.3",
     "@unovis/ts": "^1.6.2",
     "@unovis/vue": "^1.6.2",
     "@vueuse/core": "^14.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dnd-kit-vue": "^0.0.2",
     "lucide-vue-next": "^0.556.0",
     "reka-ui": "^2.6.1",
     "tailwind-merge": "^3.4.0",
     "vue": "^3.5.24",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.17",
