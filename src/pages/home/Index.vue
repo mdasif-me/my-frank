@@ -21,6 +21,8 @@ import Competitors from './competitors.vue';
     </div>
     <Card />
     <Campaigns />
-    <Competitors />
+    <div class="md:block hidden">
+      <Competitors />
+    </div>
   </section>
 </template>
