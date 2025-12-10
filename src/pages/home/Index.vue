@@ -3,6 +3,7 @@ import { Add01Icon } from '@hugeicons-pro/core-stroke-rounded';
 import { HugeiconsIcon } from '@hugeicons/vue';
 
 import Button from '../../components/ui/button/Button.vue';
+import Campaigns from './campaigns.vue';
 import Card from './card.vue';
 </script>
 
@@ -18,5 +19,6 @@ import Card from './card.vue';
       </Button>
     </div>
     <Card />
+    <Campaigns />
   </section>
 </template>
