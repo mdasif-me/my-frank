@@ -5,6 +5,7 @@ import { HugeiconsIcon } from '@hugeicons/vue';
 import Button from '@/components/ui/button/Button.vue';
 import Campaigns from './campaigns.vue';
 import Card from './card.vue';
+import Competitors from './competitors.vue';
 </script>
 
 <template>
@@ -20,5 +21,6 @@ import Card from './card.vue';
     </div>
     <Card />
     <Campaigns />
+    <Competitors />
   </section>
 </template>
