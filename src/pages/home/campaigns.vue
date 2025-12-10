@@ -146,9 +146,9 @@ const rankings = computed(() => rankingStore.rankings);
         </Tabs>
       </CardContent>
     </Card>
-    <Card class="md:w-6/12 w-full h-auto">
-      <CardHeader class="flex items-center justify-between w-full">
-        <CardTitle class="text-2xl font-bold leading-normal"
+    <Card class="md:w-6/12 w-full h-auto md:py-6 py-0 md:border border-none">
+      <CardHeader class="flex items-center justify-between w-full md:px-6 px-0">
+        <CardTitle class="md:text-2xl text-base font-medium md:font-semibold"
           >Team Ranking</CardTitle
         >
         <Combobox
@@ -164,7 +164,7 @@ const rankings = computed(() => rankingStore.rankings);
         />
       </CardHeader>
       <CardContent
-        class="w-full max-h-[708px] min-h-[708px] overflow-auto space-y-3"
+        class="w-full max-h-[708px] min-h-[708px] overflow-auto space-y-3 md:px-6 px-0"
       >
         <div v-if="rankingStore.loading" class="text-center py-8">
           <p class="text-muted-foreground">Loading rankings...</p>
@@ -173,15 +173,17 @@ const rankings = computed(() => rankingStore.rankings);
           <p class="text-red-500">{{ rankingStore.error }}</p>
         </div>
         <Card v-for="ranking in rankings" :key="ranking.id">
-          <CardContent class="flex items-center gap-3 justify-between w-full">
-            <div class="flex items-center gap-3 w-full">
+          <CardContent
+            class="flex items-center md:gap-3 gap-1 justify-between w-full"
+          >
+            <div class="flex items-center md:gap-3 gap-1 w-full">
               <img
                 src="../../assets/bages-icon.svg"
-                class="size-14 shrink-0"
+                class="md:size-14 size-10 shrink-0"
                 alt="Team Ranking"
               />
               <article class="w-fit shrink-0">
-                <h1 class="text-xl font-semibold">
+                <h1 class="md:text-xl text-base font-medium md:font-semibold">
                   {{ ranking.topPerformer }}
                 </h1>
                 <p class="flex items-center gap-1">
@@ -190,8 +192,8 @@ const rankings = computed(() => rankingStore.rankings);
                     :icon="StarIcon"
                     :color="'#FDB022'"
                   />
-                  <span class="text-base font-normal"
-                    ><span class="text-base font-medium">{{
+                  <span class="md:text-base text-xs font-normal"
+                    ><span class="md:text-base text-xs font-medium">{{
                       ranking.progress
                     }}</span
                     >% ({{ ranking.title }})</span
