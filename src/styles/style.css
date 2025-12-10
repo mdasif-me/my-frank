@@ -140,6 +140,19 @@
     linear-gradient(90deg, #4ade80 0%, #12a8ff 54.5%)
   );
 }
+.btn-gradient-card {
+  display: flex;
+  padding: 3px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 39px;
+  background: linear-gradient(
+    90deg,
+    var(--Blue-100, rgba(176, 202, 248, 0.6)) 0%,
+    rgba(248, 230, 249, 0.6) 100%
+  );
+}
 
 .text-gradient {
   font-style: normal;

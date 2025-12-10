@@ -6,6 +6,7 @@ import { HugeiconsIcon } from '@hugeicons/vue';
 import { ref } from 'vue';
 import Badge from '../../components/ui/badge/Badge.vue';
 import Button from '../../components/ui/button/Button.vue';
+import Separator from '../../components/ui/separator/Separator.vue';
 import Archive from './status/archive.vue';
 import Campaign from './status/campaign.vue';
 import Completed from './status/completed.vue';
@@ -27,49 +28,79 @@ const tabValue = ref('campaign');
       >
     </CardHeader>
     <CardContent class="w-full">
-      <Tabs v-model="tabValue" class="w-full h-10">
-        <TabsList class="w-full bg-[#EBEFF5] h-10">
+      <Tabs v-model="tabValue" class="w-full">
+        <TabsList class="w-full bg-[#EBEFF5] gap-2 h-10 mb-6">
           <TabsTrigger
-            :class="tabValue === 'campaign' && 'bg-white!'"
+            :class="tabValue === 'campaign' && 'bg-white! shadow!'"
             value="campaign"
-            >All Campaign
-            <Badge
-              class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
-            >
-              8
-            </Badge></TabsTrigger
           >
+            All Campaign
+            <Badge
+              :class="
+                tabValue === 'campaign'
+                  ? 'text-primary'
+                  : 'text-[#334155]! bg-[#CBD5E1]!'
+              "
+              class="h-5 min-w-5 bg-[#E6EEFD] rounded-full px-1 tabular-nums font-medium text-xs"
+            >
+              3
+            </Badge>
+          </TabsTrigger>
+          <Separator orientation="vertical" class="bg-[#94A3B8]" />
           <TabsTrigger
-            :class="tabValue === 'upcoming' && 'bg-white!'"
+            :class="tabValue === 'upcoming' && 'bg-white! shadow!'"
             value="upcoming"
             >Upcoming<Badge
+              :class="
+                tabValue === 'upcoming'
+                  ? 'text-primary'
+                  : 'text-[#334155]! bg-[#CBD5E1]!'
+              "
               class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
             >
               8
             </Badge></TabsTrigger
           >
+          <Separator orientation="vertical" class="bg-[#94A3B8]" />
           <TabsTrigger
-            :class="tabValue === 'inprogress' && 'bg-white!'"
+            :class="tabValue === 'inprogress' && 'bg-white! shadow!'"
             value="inprogress"
             >In Progress<Badge
+              :class="
+                tabValue === 'inprogress'
+                  ? 'text-primary'
+                  : 'text-[#334155]! bg-[#CBD5E1]!'
+              "
               class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
             >
               8
             </Badge></TabsTrigger
           >
+          <Separator orientation="vertical" class="bg-[#94A3B8]" />
           <TabsTrigger
-            :class="tabValue === 'completed' && 'bg-white!'"
+            :class="tabValue === 'completed' && 'bg-white! shadow!'"
             value="completed"
             >Completed<Badge
+              :class="
+                tabValue === 'completed'
+                  ? 'text-primary'
+                  : 'text-[#334155]! bg-[#CBD5E1]!'
+              "
               class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
             >
               8
             </Badge></TabsTrigger
           >
+          <Separator orientation="vertical" class="bg-[#94A3B8]" />
           <TabsTrigger
-            :class="tabValue === 'archive' && 'bg-white!'"
+            :class="tabValue === 'archive' && 'bg-white! shadow!'"
             value="archive"
             >Archive<Badge
+              :class="
+                tabValue === 'archive'
+                  ? 'text-primary'
+                  : 'text-[#334155]! bg-[#CBD5E1]!'
+              "
               class="h-5 min-w-5 bg-[#E6EEFD] text-primary rounded-full px-1 tabular-nums font-medium text-xs"
             >
               8
