@@ -11,7 +11,7 @@ const { open } = useSidebar();
   >
     <SidebarTrigger
       :class="{
-        'lg:-ml-8': open,
+        'lg:-ml-8 md:block hidden': open,
       }"
       class="text-secondary-foreground bg-background p-2 rounded-full"
     />

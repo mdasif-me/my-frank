@@ -5,6 +5,8 @@ import {
   Store01Icon,
   Tag01Icon,
 } from '@hugeicons-pro/core-stroke-rounded';
+import { Location06Icon } from '@hugeicons-pro/core-stroke-standard';
+import { HugeiconsIcon } from '@hugeicons/vue';
 import Button from '../ui/button/Button.vue';
 import Combobox from '../ui/combobox/Index.vue';
 
@@ -39,7 +41,7 @@ const languages = [
 <template>
   <section class="flex items-center justify-between w-full">
     <div
-      class="bg-foreground rounded-lg p-3 border border-border h-13 flex items-center"
+      class="bg-foreground hidden rounded-lg p-3 border border-border h-13 md:flex items-center"
     >
       <div class="flex items-center gap-4">
         <Button
@@ -53,7 +55,7 @@ const languages = [
       </div>
     </div>
 
-    <div class="flex items-center gap-3">
+    <div class="md:flex hidden items-center gap-3">
       <div>
         <Combobox
           class="h-12 bg-white font-medium"
@@ -95,6 +97,25 @@ const languages = [
           <p class="text-[#0F172A] text-sm font-semibold">Forhad Sheikh</p>
           <p class="text-xs text-[#475569] font-semibold -mt-1">Manager</p>
         </article>
+      </div>
+    </div>
+    <div class="md:hidden flex items-center justify-between">
+      <article class="flex items-center gap-1">
+        <HugeiconsIcon class="size-5 text-primary" :icon="Location06Icon" />
+        <p class="text-sm font-medium text-primary">Establish Name goes here</p>
+      </article>
+      <div>
+        <Combobox
+          icon-only
+          width="w-fit"
+          align="end"
+          class="rounded-full bg-muted font-medium"
+          model-value="english"
+          :options="languages"
+          placeholder="Choose a language"
+          search-placeholder="Search language"
+          @update:model-value="(val: string) => (selectedFramework = val)"
+        />
       </div>
     </div>
   </section>

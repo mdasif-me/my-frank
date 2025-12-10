@@ -41,6 +41,7 @@ interface Props {
   size?: 'sm' | 'lg' | 'default';
   class?: string;
   isMenuIcon?: boolean;
+  iconOnly?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -58,6 +59,7 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'default',
   class: '',
   isMenuIcon: false,
+  iconOnly: false,
 });
 
 const emit = defineEmits<{
@@ -86,7 +88,27 @@ function clearValue() {
 <template>
   <Popover v-model:open="open">
     <PopoverTrigger as-child>
+      <!-- Icon Only Mode -->
       <Button
+        v-if="iconOnly"
+        :variant="disabled ? 'secondary' : 'outline'"
+        role="combobox"
+        :aria-expanded="open"
+        :disabled="disabled"
+        size="icon"
+        :class="props.class"
+      >
+        <HugeiconsIcon
+          v-if="selectedOption?.icon"
+          :icon="selectedOption.icon"
+          class="size-4"
+        />
+        <HugeiconsIcon v-else :icon="ArrowDown01Icon" class="size-4" />
+      </Button>
+
+      <!-- Default Mode -->
+      <Button
+        v-else
         :variant="disabled ? 'secondary' : 'outline'"
         role="combobox"
         :aria-expanded="open"
