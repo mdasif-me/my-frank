@@ -99,22 +99,28 @@ const languages = [
         </article>
       </div>
     </div>
-    <div class="md:hidden flex items-center justify-between">
+    <div class="md:hidden flex items-center justify-between w-full">
       <article class="flex items-center gap-1">
         <HugeiconsIcon class="size-5 text-primary" :icon="Location06Icon" />
         <p class="text-sm font-medium text-primary">Establish Name goes here</p>
       </article>
-      <div>
+      <div class="flex items-center gap-2">
         <Combobox
           icon-only
           width="w-fit"
           align="end"
-          class="rounded-full bg-muted font-medium"
+          class="rounded-full bg-muted text-secondary-foreground font-medium size-8"
           model-value="english"
           :options="languages"
           placeholder="Choose a language"
           search-placeholder="Search language"
           @update:model-value="(val: string) => (selectedFramework = val)"
+        />
+        <img
+          src="../../assets/user.png"
+          alt="user icon"
+          sizes="32"
+          class="w-8 border rounded-full shrink-0"
         />
       </div>
     </div>
