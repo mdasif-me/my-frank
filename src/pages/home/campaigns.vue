@@ -155,16 +155,16 @@ const rankings = computed(() => rankingStore.rankings);
           class="bg-white w-48"
           :options="[
             { value: '4.9', label: 'Sarah Chen' },
-            { value: '4.9', label: 'Sarah Chen' },
-            { value: '4.9', label: 'Sarah Chen' },
-            { value: '4.9', label: 'Sarah Chen' },
+            { value: '4.4', label: 'David Chen' },
+            { value: '4.2', label: 'Farah Chen' },
+            { value: '4.1', label: 'Nicole Chen' },
           ]"
           placeholder="Number of reviews"
           search-placeholder="Search countries..."
         />
       </CardHeader>
       <CardContent
-        class="w-full max-h-[708px] min-h-[708px] overflow-auto space-y-3 md:px-6 px-0"
+        class="w-full md:max-h-[708px] md:min-h-[708px] overflow-auto space-y-3 md:px-6 px-0"
       >
         <div v-if="rankingStore.loading" class="text-center py-8">
           <p class="text-muted-foreground">Loading rankings...</p>
@@ -172,7 +172,11 @@ const rankings = computed(() => rankingStore.rankings);
         <div v-else-if="rankingStore.error" class="text-center py-8">
           <p class="text-red-500">{{ rankingStore.error }}</p>
         </div>
-        <Card v-for="ranking in rankings" :key="ranking.id">
+        <Card
+          v-for="(ranking, index) in rankings"
+          :class="{ 'hidden md:flex': index >= 5 }"
+          :key="ranking.id"
+        >
           <CardContent
             class="flex items-center md:gap-3 gap-1 justify-between w-full"
           >

@@ -31,14 +31,20 @@ const getStatusText = (status: string) => {
 </script>
 
 <template>
-  <section class="space-y-4 max-h-[636px] flex-1 overflow-y-auto">
+  <section
+    class="space-y-4 md:max-h-[636px] md:min-h-[636px] flex-1 overflow-y-auto"
+  >
     <div v-if="rankingStore.loading" class="text-center py-8">
       <p class="text-muted-foreground">Loading campaigns...</p>
     </div>
     <div v-else-if="rankingStore.error" class="text-center py-8">
       <p class="text-red-500">{{ rankingStore.error }}</p>
     </div>
-    <Card v-for="ranking in rankings" :key="ranking.id">
+    <Card
+      v-for="(ranking, index) in rankings"
+      :class="{ 'hidden md:flex': index >= 3 }"
+      :key="ranking.id"
+    >
       <CardHeader class="flex items-center justify-between w-full">
         <CardTitle class="md:text-2xl text-base font-medium md:font-semibold">
           {{ ranking.title }}

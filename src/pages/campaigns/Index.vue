@@ -13,15 +13,12 @@ import { computed, h, onMounted } from 'vue';
 
 const campaignStore = useCampaignStore();
 
-// Fetch campaigns on component mount
 onMounted(() => {
   campaignStore.fetchCampaigns();
 });
 
-// Compute data from store
 const data = computed(() => campaignStore.campaigns);
 
-// Define columns for campaigns table
 const tableColumns: any = [
   {
     accessorKey: 'name',

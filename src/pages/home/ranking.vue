@@ -39,7 +39,11 @@ const getStatusText = (status: string) => {
       <p class="text-red-500">{{ rankingStore.error }}</p>
     </div>
     <template v-else>
-      <Card v-for="ranking in rankings" :key="ranking.id">
+      <Card
+        v-for="(ranking, index) in rankings"
+        :class="{ 'hidden md:flex': index >= 3 }"
+        :key="ranking.id"
+      >
         <CardHeader class="flex items-center justify-between w-full">
           <CardTitle class="text-2xl font-semibold">
             {{ ranking.title }}
